@@ -18,7 +18,38 @@ set hidden
 set nocompatible
 set encoding=utf-8
 
-colorscheme gruvbox-material
+" vim-plug manager
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'prettier/vim-prettier', {
+   \ 'do': 'npm install -g',
+   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'projekt0n/github-nvim-theme'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'alvan/vim-closetag'
+
+Plug 'tpope/vim-commentary'
+
+Plug 'tpope/vim-surround'
+
+Plug 'SirVer/ultisnips'
+
+Plug 'honza/vim-snippets'
+
+call plug#end()
 
 " custom shortcuts
 
@@ -47,9 +78,6 @@ nnoremap <C-b> :Buffers <ENTER>
 " :terminal
 tnoremap <C-n> <C-\><C-n>
 
-" Toggle NERDTree
-map <F5> :NERDTreeToggle<CR>
-
 " Call :Prettier
 map <F6> :Prettier <ENTER>
 
@@ -77,35 +105,4 @@ let g:CtrlSpaceDefaultMappingKey = "<C-x>"
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.js'
 
-"vim-plug manager
-call plug#begin()
-
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'preservim/nerdtree'
-
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'alvan/vim-closetag'
-
-Plug 'tpope/vim-commentary'
-
-Plug 'tpope/vim-surround'
-
-Plug 'SirVer/ultisnips'
-
-Plug 'honza/vim-snippets'
-
-call plug#end()
+colorscheme github_dark
