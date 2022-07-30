@@ -1,7 +1,8 @@
 " if all letters are lowercase ignore case
 set ignorecase smartcase
 set backspace=indent,eol,start
-set autoindent
+" set indenation to 2 spaces
+set autoindent expandtab tabstop=2 shiftwidth=2
 set writebackup
 set history=50
 set ruler
@@ -22,12 +23,13 @@ set encoding=utf-8
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'sheerun/vim-polyglot'
 
 Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install -g',
-   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+   \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -37,7 +39,7 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 Plug 'alvan/vim-closetag'
 
@@ -70,10 +72,13 @@ nnoremap <C-k> :tabnext<CR>
 " Move in buffers
 nnoremap <SPACE>bp :bprev<CR>
 nnoremap <SPACE>bn :bnext<CR>
+" Close current buffer
+nnoremap <SPACE>bd :bdelete <ENTER>
 
 " Fzf
 nnoremap <C-p> :Files <ENTER>
 nnoremap <C-b> :Buffers <ENTER>
+nnoremap <C-g> :GFiles <ENTER>
 
 " :terminal
 tnoremap <C-n> <C-\><C-n>
@@ -93,6 +98,9 @@ let g:user_emmet_settings = {
 \  },
 \}
 
+" vim-prettier
+let g:prettier#config#tab_width = '2'
+
 " UltiSnips Key Mappings
 let g:UltiSnipsExpandTrigger="<TAB>"
 " list all snippets for current filetype
@@ -104,5 +112,8 @@ let g:CtrlSpaceDefaultMappingKey = "<C-x>"
 " CloseTag
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.js'
+
+" Airline Theme
+let g:airline_theme='simple'
 
 colorscheme github_dark
